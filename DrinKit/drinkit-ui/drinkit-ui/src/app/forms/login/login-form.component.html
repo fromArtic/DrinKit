@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="login-form.component.css"/>
+    <title>Login</title>
+  </head>
+
+  <body>
+
+    <div class="splitdiv" id="leftdiv">
+      <div class="img" id="fractal-glass"></div>
+    </div>
+
+    <div class="splitdiv" id="rightdiv">
+
+      <div class="img" id="circle-fill"></div>
+      <div class="img" id="circle-outline"></div>
+
+      <div class="card">
+
+        <div class="left-align">
+
+          <!-- Header -->
+
+          <div>
+            <h1 style="margin-top:.96vh">
+              <span class="Poppins-Medium">Bem vindo ao </span>
+              <span class="Sarpanch-Regular">
+                <span style="font-size:6.76vh">D</span>
+                <span style="font-size:5.47vh">rin</span>
+                <span style="font-size:6.76vh">K</span>
+                <span style="font-size:5.47vh">it</span>
+              </span>
+            </h1>
+          </div>
+
+          <div class="nobreak-container-uncentered">
+            <div *ngIf="!msg"><h2 class="Poppins-ExtraLight">Login</h2></div>
+            <div *ngIf="msg" class="error-msg">{{ msg }}</div>
+          </div>
+
+          <div class="largegap"></div>
+
+          <!-- Email -->
+          <div><h2 class="Poppins-SemiBold">Email</h2></div>
+          <div class="input">
+            <input pInputText type="email" class="input-field" name="user" placeholder="digite seu email aqui" ngModel required #user (keydown.enter)="login(user.value, password.value)">
+            <svg class="input-icon" id="email-icon" viewBox="0 0 56 48" fill="none">
+              <rect x="7.63806" y="8.77619" width="41.5714" height="24.9429" fill="black"/>
+              <path d="M41.819 0H14.1047C5.79042 0 0.247559 4.15714 0.247559 13.8571V33.2571C0.247559 42.9571 5.79042 47.1143 14.1047 47.1143H41.819C50.1333 47.1143 55.6761 42.9571 55.6761 33.2571V13.8571C55.6761 4.15714 50.1333 0 41.819 0ZM43.1216 16.878L34.447 23.8066C32.6178 25.2754 30.2898 25.996 27.9618 25.996C25.6338 25.996 23.2781 25.2754 21.4767 23.8066L12.8021 16.878C11.9153 16.1574 11.7767 14.8271 12.4696 13.9403C13.1901 13.0534 14.4927 12.8871 15.3796 13.6077L24.0541 20.5363C26.1604 22.2269 29.7356 22.2269 31.8418 20.5363L40.5164 13.6077C41.4033 12.8871 42.7336 13.0257 43.4264 13.9403C44.147 14.8271 44.0084 16.1574 43.1216 16.878Z"/>
+            </svg>
+          </div>
+
+          <div class="gap"></div>
+
+          <!-- Senha -->
+          <div><h2 class="Poppins-SemiBold">Senha</h2></div>
+          <div class="input">
+            <input pInputText type="{{ showPassword ? 'text' : 'password' }}" class="input-field" id="password-input" name="password" placeholder="•••••••••" ngModel required #password (keydown.enter)="login(user.value, password.value)">
+            <svg class="input-icon" id="password-icon" viewBox="0 0 57 69" fill="none">
+              <rect x="12.3333" y="12.0095" width="31.4095" height="42.4952" fill="black"/>
+              <path d="M50.3366 7.54004L31.9863 0.535538C30.0846 -0.178513 26.9817 -0.178513 25.0799 0.535538L6.72965 7.54004C3.19305 8.90014 0.32373 13.1164 0.32373 16.9587V44.5007C0.32373 47.2549 2.09203 50.8932 4.2607 52.5253L22.611 66.5003C25.8473 68.9825 31.1522 68.9825 34.3886 66.5003L52.7388 52.5253C54.9075 50.8591 56.6758 47.2549 56.6758 44.5007V16.9587C56.7092 13.1164 53.8399 8.90014 50.3366 7.54004ZM31.0188 37.1222V46.0648C31.0188 47.4589 29.8844 48.615 28.5165 48.615C27.1485 48.615 26.0141 47.4589 26.0141 46.0648V37.1222C22.6444 36.0341 20.1754 32.8379 20.1754 29.0636C20.1754 24.3713 23.9122 20.563 28.5165 20.563C33.1207 20.563 36.8575 24.3713 36.8575 29.0636C36.8575 32.8719 34.3886 36.0341 31.0188 37.1222Z"/>
+            </svg>
+
+            <button class="password-toggle-btn" (click)="togglePassword()">
+              <svg *ngIf="!showPassword" class="password-toggle-icon" viewBox="0 0 68 68" fill="none">
+                <path d="M41.1684 26.8317L26.8317 41.1683C24.99 39.3267 23.8567 36.805 23.8567 34C23.8567 28.39 28.39 23.8567 34 23.8567C36.805 23.8567 39.3267 24.99 41.1684 26.8317Z" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50.49 16.3483C45.5317 12.6083 39.865 10.5683 34 10.5683C23.9984 10.5683 14.6767 16.4617 8.18838 26.6617C5.63838 30.6567 5.63838 37.3717 8.18838 41.3667C10.4267 44.88 13.0334 47.9117 15.8667 50.3483" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.4" d="M23.8567 55.335C27.0867 56.695 30.515 57.4317 34 57.4317C44.0017 57.4317 53.3234 51.5383 59.8117 41.3383C62.3617 37.3433 62.3617 30.6283 59.8117 26.6333C58.8767 25.16 57.8567 23.7717 56.8084 22.4683" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.4" d="M43.9451 35.9833C43.2084 39.9783 39.9501 43.2367 35.9551 43.9733" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M26.8317 41.1683L5.66675 62.3333" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M62.3335 5.66669L41.1685 26.8317" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="showPassword" class="password-toggle-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.42004 13.98 8.42004 12C8.42004 10.02 10.02 8.42004 12 8.42004C13.98 8.42004 15.58 10.02 15.58 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39997C18.82 5.79997 15.53 3.71997 12 3.71997C8.46997 3.71997 5.17997 5.79997 2.88997 9.39997C1.98997 10.81 1.98997 13.18 2.88997 14.59C5.17997 18.19 8.46997 20.27 12 20.27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Footer -->
+
+          <div class="minigap nobreak-container">
+            <label class="cbx">
+              <input type="checkbox">
+              <div class="cbx-transition"></div>
+            </label>
+            <h3 class="Poppins-Medium" style="margin-left:1.39vh">Manter conectado</h3>
+            <div class="horizontal-gap"></div>
+            <a class="Poppins-SemiBold" (click)="recovery()">Esqueceu sua senha?</a>
+          </div>
+
+          <div class="gap"></div>
+
+          <button pButton type="submit" class="btn" label="Entrar" (click)="login(user.value, password.value)"></button>
+
+          <div class="minigap"></div>
+
+          <div class="minigap nobreak-container">
+            <h3 class="Poppins-Medium">Não tem uma conta?</h3><a pButton class="Poppins-SemiBold" label="Registre-se aqui!" style="margin-left:.53vh" (click)="redirect()"></a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

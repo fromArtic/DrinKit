@@ -1,0 +1,404 @@
+body {
+  overflow-x: hidden;
+  background-color: #1F1F1F;
+}
+
+.popup {
+  width: 100%;
+  padding: 1.3%;
+  display: flex;
+  flex-direction: row;
+  gap: 4.3vh;
+  background-color: #1F1F1F;
+}
+
+.minigap {
+  height: .1vh;
+}
+
+.nobreak-container {
+  display: flex;
+  align-items: center;
+  gap: 1.7vh;
+}
+
+/* Card */
+
+.card {
+  position: absolute;
+  width: 40%;
+  height: 74.7vh;
+  border-radius: 1.2vh;
+  background-color: #353535;
+}
+
+.card-drink {
+  height: 100%;
+  background-position: center;
+  background-size: 98%;
+  background-repeat: no-repeat;
+}
+
+/* Customização do kit */
+
+.kit-customization {
+  margin-left: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+#minigap-baseline {
+  align-items: baseline;
+  gap: .7vh;
+}
+
+#minigap {
+  gap: 1vh;
+}
+
+#largegap {
+  gap: 2.5vh;
+}
+
+.divider {
+  width: 100%;
+  border: .01vh solid rgba(193, 193, 193, 0);
+  box-shadow: 0 .1vh 0 0 rgba(193, 193, 193, .4);
+}
+
+/* Dropdown */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn.no-drink-selected,
+.dropdown-btn.no-fruit-selected,
+.dropdown-btn.no-flavoring-selected,
+.dropdown-btn.no-sweetener-selected,
+.dropdown-btn.no-misc-selected  {
+  border-color: #f52c2cb9;
+}
+
+.dropdown-btn {
+  padding: .1vh 1vh;
+  background-color: #353535;
+  border: .2vh solid #41A76A;
+  border-radius: .2vh;
+  font-family: Poppins-ExtraLight;
+  font-size: 1.9vh;
+  color: white;
+}
+
+.dropdown-btn:disabled {
+  color: #8A8A8A;
+  cursor: not-allowed;
+}
+
+.dropdown-content {
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  overflow-y: auto;
+  margin-top: .1vh;
+  z-index: 1;
+  display: none;
+  background-color: #f9f9f9;
+  box-shadow: 0 .85vh 1.7vh 0 rgba(0, 0, 0, .2);
+  font-family: Poppins-Light;
+  font-size: 1.9vh;
+}
+
+.dropdown-btn:focus + .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 1.3vh 1.7vh;
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-divider {
+  height: 2.4vh;
+}
+
+.dropdown-arrow {
+  width: 1.9vh;
+  fill: white;
+}
+
+/* Spinner */
+
+.spinner {
+  width: fit-content;
+  padding: .1vh 1vh;
+  display: flex;
+  align-items: center;
+  background-color: #353535;
+  border: .2vh solid #41A76A;
+  border-radius: .2vh;
+  font-family: Poppins-ExtraLight;
+  font-size: 1.9vh;
+  color: white;
+}
+
+.spinner-decrease-btn, .spinner-increase-btn {
+  width: 2vh;
+  height: 2vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.spinner-decrease-btn:disabled {
+  cursor: not-allowed;
+}
+
+.spinner-decrease-icon {
+  width: 1.3vh;
+  stroke: white;
+}
+
+.spinner-increase-icon {
+  width: 1.3vh;
+  stroke: white;
+}
+
+.spinner-divider {
+  height: 2.4vh;
+}
+
+.spinner-decrease-btn, .spinner-increase-btn, .spinner-divider {
+  margin-left: 1vh;
+}
+
+/* Botões (customização) */
+
+.add-btn, .del-btn {
+  width: fit-content;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.add-btn:hover, .del-btn:hover {
+  transform: scale(1.1);
+}
+
+.add-icon, .del-icon {
+  height: 3.3vh;
+  fill: #353535;
+}
+
+.add-btn:hover .add-icon {
+  fill: #41a76ab2;
+}
+
+.add-btn:active .add-icon {
+  fill: #41a76a;
+}
+
+.del-btn:hover .del-icon {
+  fill: #f52c2cb9;
+}
+
+.del-btn:active .del-icon {
+  fill: #F52C2C;
+}
+
+/* Botões (compra) */
+
+.btn-container {
+  padding-bottom: 1.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4.5vh;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 1.3vh;
+  box-shadow: 0 .2vh .35vh rgba(0, 0, 0, .3);
+  font-family: Poppins-Medium;
+  font-size: 2vh;
+  line-height: 1.6em;
+  letter-spacing: .115em;
+  color: white;
+  cursor: pointer;
+  transition: transform .2s ease, letter-spacing .2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  letter-spacing: .15em;
+}
+
+#cart-btn, #buy-btn {
+  height: 14vh;
+  padding-top: .8vh;
+  transition: background 100ms;
+}
+
+#cart-btn {
+  width: 20.4vh;
+  background-color: #353535;
+}
+
+#cart-btn:active {
+  background-color: black;
+}
+
+#buy-btn {
+  width: 16vh;
+  background-color: #41A76A;
+}
+
+#buy-btn:active {
+  background-color: #143E39;
+}
+
+.cart-btn-icon, .buy-btn-icon {
+  width: 3.5vh;
+  margin-bottom: .8vh;
+  fill: white;
+}
+
+/* Texto */
+
+h1, h2, h3, h4 {
+  margin: 0;
+  line-height: .9;
+  word-wrap: break-word;
+  color: white;
+}
+
+h1, h2 {
+  font-size: 2.75vh;
+}
+
+h2 {
+  letter-spacing: .04em;
+}
+
+h3, h4 {
+  font-weight: lighter;
+}
+
+h3 {
+  font-size: 1.6vh;
+}
+
+h4 {
+  font-size: 1.4vh;
+}
+
+a {
+  cursor: pointer;
+}
+
+#underlined {
+  width: fit-content;
+  padding-bottom: 1vh;
+  border: .01vh solid rgba(193, 193, 193, 0);
+  box-shadow: 0 .15vh 0 0 #41A76A;
+}
+
+/* Imagens */
+
+.mojito {
+  background-image: url('../images/mojito-light.png');
+}
+
+.caipirinha {
+  background-image: url('../images/caipirinha-light.png');
+}
+
+.martini {
+  background-image: url('../images/martini-light.png');
+}
+
+.shirley-temple {
+  background-image: url('../images/shirley-temple-light.png');
+}
+
+.bloody-mary {
+  background-image: url('../images/bloody-mary-light.png');
+}
+
+.piña-colada {
+  background-image: url('../images/pina-colada-light.png');
+}
+
+/* Ícones */
+
+.main-icon {
+  margin-left: 1vh;
+  fill: #41A76A;
+}
+
+#tick-icon {
+  width: 3.4vh;
+  fill: white;
+}
+
+#drink-icon, #sweetener-icon {
+  width: 2.1vh;
+}
+
+#fruit-icon {
+  width: 3.3vh;
+  fill: none;
+}
+
+#flavoring-icon {
+  width: 2.6vh;
+}
+
+#misc-icon {
+  width: 2.8vh;
+}
+
+#qtt-icon {
+  width: 3vh;
+}
+
+#sum-icon {
+  width: 3.6vh;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: .64vh;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .64vh;
+  background-color: #656565;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #575757;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1F1F1F;
+}

@@ -1,0 +1,42 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="credit-pop-up.component.css"/>
+  <title>Checkout PopUp</title>
+</head>
+
+<body>
+
+  <div class="popup">
+
+    <div class="cabeca">Crédito</div>
+
+    <div class="popup-container" (click)="closePopupOutside($event)">
+      <div class="fecha">
+        <button class="close-button" (click)="close()">Fechar</button>
+      </div>
+    </div>
+
+    <div class="informacao">
+      <div class="numero">
+          <input pInputText placeholder="8888-8888-8888-8888" />
+      </div>
+
+      <div class="nome">
+        <label for="nome">Nome</label>
+        <input type="text" pInputText placeholder="Nome" />
+      </div>
+
+      <div class="cvv">
+          <input type="text" pInputText placeholder="CVV" />
+      </div>
+
+      <div class="vencimento">
+          <input type="text" pInputText placeholder="Vencimento" />
+      </div>
+    </div>
+
+    <p-button label="Salvar" icon="pi pi-check"></p-button>
+
+  </div>
+  
+</body>

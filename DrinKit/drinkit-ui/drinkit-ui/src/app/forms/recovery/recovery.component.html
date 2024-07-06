@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="recovery.component.css"/>
+    <title>Recuperar Senha</title>
+  </head>
+
+  <body>
+
+    <div class="splitdiv" id="leftdiv">
+      <div class="img" id="fractal-glass"></div>
+    </div>
+
+    <div class="splitdiv" id="rightdiv">
+
+      <div class="img" id="circle-fill"></div>
+      <div class="img" id="circle-outline"></div>
+
+      <div class="card">
+
+        <div class="left-align">
+
+          <!-- Header -->
+
+          <div>
+            <h1 style="margin-top:.96vh">
+              <span class="Poppins-Medium">Recuperação de senha</span>
+            </h1>
+          </div>
+
+          <div class="nobreak-container-uncentered">
+            <div *ngIf="!msg"><h2 class="Poppins-ExtraLight">Credenciais</h2></div>
+            <div *ngIf="msg" class="error-msg">{{ msg }}</div>
+          </div>
+
+          <div class="largegap"></div>
+
+          <!-- Email -->
+          <div><h2 class="Poppins-SemiBold">Email</h2></div>
+          <div class="input">
+            <input pInputText type="email" class="input-field" name="user" placeholder="digite seu email aqui" ngModel required #user>
+            <svg class="input-icon" id="email-icon" viewBox="0 0 56 48" fill="none">
+              <rect x="7.63806" y="8.77619" width="41.5714" height="24.9429" fill="black"/>
+              <path d="M41.819 0H14.1047C5.79042 0 0.247559 4.15714 0.247559 13.8571V33.2571C0.247559 42.9571 5.79042 47.1143 14.1047 47.1143H41.819C50.1333 47.1143 55.6761 42.9571 55.6761 33.2571V13.8571C55.6761 4.15714 50.1333 0 41.819 0ZM43.1216 16.878L34.447 23.8066C32.6178 25.2754 30.2898 25.996 27.9618 25.996C25.6338 25.996 23.2781 25.2754 21.4767 23.8066L12.8021 16.878C11.9153 16.1574 11.7767 14.8271 12.4696 13.9403C13.1901 13.0534 14.4927 12.8871 15.3796 13.6077L24.0541 20.5363C26.1604 22.2269 29.7356 22.2269 31.8418 20.5363L40.5164 13.6077C41.4033 12.8871 42.7336 13.0257 43.4264 13.9403C44.147 14.8271 44.0084 16.1574 43.1216 16.878Z"/>
+            </svg>
+          </div>
+
+          <div class="gap"></div>
+
+          <div class="gap"></div>
+
+          <button pButton type="submit" class="btn" label="Recuperar" (click)="recovery(user.value)"></button>
+
+          <div class="minigap"></div>
+
+          <div class="minigap nobreak-container"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

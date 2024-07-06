@@ -1,0 +1,367 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="drink-pop-up.component.css"/>
+  <title>Drink pop-up</title>
+</head>
+
+<body>
+
+  <div class="popup">
+
+    <!-- Card -->
+    <div class="card">
+      <div class="card-drink" [ngClass]="getDrinkClass()"></div>
+    </div>
+
+    <!-- Customização do kit -->
+
+    <div class="kit-customization left-align">
+
+      <div class="minigap"></div>
+
+      <!-- Nome do kit -->
+      <div class="nobreak-container">
+        <svg class="main-icon" id="tick-icon" viewBox="0 0 72 72" fill="none">
+          <path d="M64.6801 32.22L60.6001 27.48C59.8201 26.58 59.1901 24.9 59.1901 23.7V18.6C59.1901 15.42 56.5801 12.81 53.4001 12.81H48.3001C47.1301 12.81 45.4201 12.18 44.5201 11.4L39.7801 7.31999C37.7101 5.54999 34.3201 5.54999 32.2201 7.31999L27.5101 11.43C26.6101 12.18 24.9001 12.81 23.7301 12.81H18.5401C15.3601 12.81 12.7501 15.42 12.7501 18.6V23.73C12.7501 24.9 12.1201 26.58 11.3701 27.48L7.32014 32.25C5.58014 34.32 5.58014 37.68 7.32014 39.75L11.3701 44.52C12.1201 45.42 12.7501 47.1 12.7501 48.27V53.4C12.7501 56.58 15.3601 59.19 18.5401 59.19H23.7301C24.9001 59.19 26.6101 59.82 27.5101 60.6L32.2501 64.68C34.3201 66.45 37.7101 66.45 39.8101 64.68L44.5501 60.6C45.4501 59.82 47.1301 59.19 48.3301 59.19H53.4301C56.6101 59.19 59.2201 56.58 59.2201 53.4V48.3C59.2201 47.13 59.8501 45.42 60.6301 44.52L64.7101 39.78C66.4501 37.71 66.4501 34.29 64.6801 32.22ZM48.4801 30.33L33.9901 44.82C33.5701 45.24 33.0001 45.48 32.4001 45.48C31.8001 45.48 31.2301 45.24 30.8101 44.82L23.5501 37.56C22.6801 36.69 22.6801 35.25 23.5501 34.38C24.4201 33.51 25.8601 33.51 26.7301 34.38L32.4001 40.05L45.3001 27.15C46.1701 26.28 47.6101 26.28 48.4801 27.15C49.3501 28.02 49.3501 29.46 48.4801 30.33Z"/>
+        </svg>
+        <h1 class="Poppins-SemiBold">{{drinkName}}</h1>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Bebida -->
+      <div *ngIf="getDrinkProducts().length > 0" class="nobreak-container">
+        <svg class="main-icon" id="drink-icon" viewBox="0 0 47 60" fill="none">
+          <path d="M24.93 0.514522C24.4339 0.179195 23.8488 0 23.25 0C22.6512 0 22.0661 0.179195 21.57 0.514522C20.67 1.11452 0 15.5145 0 36.7545C0 42.9208 2.44955 48.8345 6.80977 53.1948C11.17 57.555 17.0837 60.0045 23.25 60.0045C29.4163 60.0045 35.33 57.555 39.6902 53.1948C44.0505 48.8345 46.5 42.9208 46.5 36.7545C46.5 15.1545 25.8 1.08452 24.93 0.514522ZM23.25 54.0045C18.6775 53.9966 14.2945 52.1766 11.0612 48.9434C7.82788 45.7101 6.00793 41.3271 6 36.7545C6 21.7545 18.63 10.4445 23.25 6.75452C27.9 10.3845 40.5 21.7545 40.5 36.7545C40.4921 41.3271 38.6721 45.7101 35.4388 48.9434C32.2055 52.1766 27.8225 53.9966 23.25 54.0045V54.0045Z"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Bebida</h2>
+      </div>
+      <!-- Bebida (dropdown tipo) -->
+      <div *ngIf="getDrinkProducts().length > 0" class="nobreak-container" id="largegap">
+        <div class="dropdown">
+          <button class="dropdown-btn nobreak-container" id="minigap" [ngClass]="{'no-drink-selected':!isDrinkSelected()}">
+            {{ selectedDrink?.name || getFirstDrink()?.name }}
+            <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+              <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isDrinkSelected() ? '#41A76A' : '#f52c2cb9'"/>
+            </svg>
+            <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+              <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z"/>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a *ngFor="let product of getDrinkProducts()" (mousedown)="selectDrink(product)">
+              {{ product.name }}
+            </a>
+          </div>
+        </div>
+        <!-- Bebida (dropdown qtd) -->
+        <div class="dropdown">
+          <button class="dropdown-btn nobreak-container" id="minigap" [disabled]="!isDrinkSelected()" [ngClass]="{'no-drink-selected':!isDrinkSelected()}">
+            {{ selectedDrink?.quantityMl || getFirstDrink()?.quantityMl }}ml
+            <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+              <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isDrinkSelected() ? '#41A76A' : '#f52c2cb9'"/>
+            </svg>
+            <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+              <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z" [attr.fill]="isDrinkSelected() ? 'white' : '#654D4D'"/>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a (mousedown)="selectMl(1000)">1000ml</a>
+            <a (mousedown)="selectMl(750)">750ml</a>
+            <a (mousedown)="selectMl(500)">500ml</a>
+            <a (mousedown)="selectMl(250)">250ml</a>
+            <a (mousedown)="selectMl(100)">100ml</a>
+          </div>
+        </div>
+      </div>
+      <!-- Bebida (btn X) -->
+      <button *ngIf="isDrinkSelected()" class="del-btn" (click)="deselectDrink()">
+        <svg class="del-icon" viewBox="0 0 72 72" fill="none">
+          <path opacity="0.4" d="M36 66C52.5685 66 66 52.5685 66 36C66 19.4315 52.5685 6 36 6C19.4315 6 6 19.4315 6 36C6 52.5685 19.4315 66 36 66Z"/>
+          <path d="M39.1801 36L46.0801 29.1C46.9501 28.23 46.9501 26.79 46.0801 25.92C45.2101 25.05 43.7701 25.05 42.9001 25.92L36.0001 32.82L29.1001 25.92C28.2301 25.05 26.7901 25.05 25.9201 25.92C25.0501 26.79 25.0501 28.23 25.9201 29.1L32.8201 36L25.9201 42.9C25.0501 43.77 25.0501 45.21 25.9201 46.08C26.3701 46.53 26.9401 46.74 27.5101 46.74C28.0801 46.74 28.6501 46.53 29.1001 46.08L36.0001 39.18L42.9001 46.08C43.3501 46.53 43.9201 46.74 44.4901 46.74C45.0601 46.74 45.6301 46.53 46.0801 46.08C46.9501 45.21 46.9501 43.77 46.0801 42.9L39.1801 36Z" fill="white"/>
+        </svg>
+      </button>
+      <!-- Bebida (valor) -->
+      <div *ngIf="getDrinkProducts().length > 0" class="nobreak-container" id="minigap-baseline">
+        <h4 class="Poppins-Regular">Valor: </h4>
+        <h3 class="Poppins-Regular">R$ {{ getUpdatedValue() }}</h3>
+      </div>
+
+      <div *ngIf="getDrinkProducts().length > 0" class="divider"></div>
+
+      <!-- Frutas -->
+      <div *ngIf="getFruitProducts().length > 0" class="nobreak-container">
+        <svg class="main-icon" id="fruit-icon" viewBox="0 0 72 72" fill="none">
+          <path d="M46.7699 36.78C55.2696 36.78 62.1599 29.8897 62.1599 21.39C62.1599 12.8904 55.2696 6 46.7699 6C38.2702 6 31.3799 12.8904 31.3799 21.39C31.3799 29.8897 38.2702 36.78 46.7699 36.78Z" stroke="#41A76A" stroke-width="5" stroke-miterlimit="10"/>
+          <path d="M19.0808 58.32C24.1839 58.32 28.3208 54.1831 28.3208 49.08C28.3208 43.9769 24.1839 39.84 19.0808 39.84C13.9777 39.84 9.84082 43.9769 9.84082 49.08C9.84082 54.1831 13.9777 58.32 19.0808 58.32Z" stroke="#41A76A" stroke-width="5" stroke-miterlimit="10"/>
+          <path d="M49.8587 66C54.1003 66 57.5387 62.5616 57.5387 58.32C57.5387 54.0785 54.1003 50.64 49.8587 50.64C45.6172 50.64 42.1787 54.0785 42.1787 58.32C42.1787 62.5616 45.6172 66 49.8587 66Z" stroke="#41A76A" stroke-width="5" stroke-miterlimit="10"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Frutas</h2>
+      </div>
+      <!-- Frutas (dropdown tipo) -->
+      <div *ngFor="let product of getFruitProducts(); let i = index">
+        <div class="nobreak-container" id="largegap">
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" (mousedown)="selectFruit(product, i)" [ngClass]="{'no-fruit-selected':!isFruitSelected(i)}">
+              {{ getSelectedFruitName(i) || product.name }}
+            </button>
+          </div>
+          <!-- Frutas (dropdown qtd) -->
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" [disabled]="!isFruitSelected(i)" [ngClass]="{'no-fruit-selected':!isFruitSelected(i)}">
+              {{ getSelectedFruitQuantity(i) || product.quantity }}{{ product.quantity === 1 ? ' unidade' : ' unidades' }}
+              <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+                <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isFruitSelected(i) ? '#41A76A' : '#f52c2cb9'"/>
+              </svg>
+              <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+                <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z" [attr.fill]="isFruitSelected(i) ? 'white' : '#654D4D'"/>
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a *ngIf="isFruitSelected(i)" (mousedown)="selectFruitQuantity(1, i)">1 unidade</a>
+              <a *ngIf="isFruitSelected(i)" (mousedown)="selectFruitQuantity(2, i)">2 unidades</a>
+              <a *ngIf="isFruitSelected(i)" (mousedown)="selectFruitQuantity(3, i)">3 unidades</a>
+              <a *ngIf="isFruitSelected(i)" (mousedown)="selectFruitQuantity(5, i)">5 unidades</a>
+              <a *ngIf="isFruitSelected(i)" (mousedown)="selectFruitQuantity(10, i)">10 unidades</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Frutas (valor) -->
+      <div *ngIf="getFruitProducts().length > 0" class="nobreak-container" id="minigap-baseline">
+        <h4 class="Poppins-Regular">Valor: </h4>
+        <h3 class="Poppins-Regular">R$ {{ getUpdatedFruitValue() }}</h3>
+      </div>
+
+      <div *ngIf="getFruitProducts().length > 0" class="divider"></div>
+
+      <!-- Aromatizantes -->
+      <div *ngIf="getFlavoringProducts().length > 0" class="nobreak-container">
+        <svg class="main-icon" id="flavoring-icon" viewBox="0 0 54 54" fill="none">
+          <path d="M50.7937 3.20639L53.2881 3.04012C53.2048 1.79043 52.2097 0.795247 50.96 0.711929L50.7937 3.20639ZM9.3119 44.6897L7.16815 45.9759C7.37927 46.3278 7.67376 46.6223 8.02563 46.8334L9.3119 44.6897ZM1.2322 49.2323C0.255906 50.2086 0.255938 51.7915 1.23227 52.7678C2.2086 53.7441 3.79151 53.7441 4.7678 52.7677L1.2322 49.2323ZM24.2886 33.2461C25.2649 32.2698 25.2649 30.6869 24.2885 29.7106C23.3122 28.7343 21.7293 28.7343 20.753 29.7107L24.2886 33.2461ZM48.2992 3.37267C49.495 21.3127 45.2577 34.4891 38.3503 41.3968C34.9356 44.8116 30.8429 46.7367 26.2668 47.0373C21.6622 47.3398 16.3681 46.0081 10.5982 42.546L8.02563 46.8334C14.4562 50.6919 20.7526 52.4104 26.5946 52.0265C32.4651 51.6409 37.6753 49.143 41.8859 44.9322C50.2291 36.5887 54.5321 21.7028 53.2881 3.04012L48.2992 3.37267ZM11.4557 43.4035C7.99367 37.6333 6.66194 32.3389 6.96444 27.734C7.26507 23.1576 9.19008 19.0647 12.6048 15.6499C19.5121 8.74228 32.6879 4.50481 50.6274 5.70085L50.96 0.711929C32.2978 -0.532302 17.4124 3.77086 9.06916 12.1144C4.85853 16.3252 2.36085 21.5356 1.9752 27.4063C1.59142 33.2485 3.30982 39.5451 7.16815 45.9759L11.4557 43.4035ZM4.7678 52.7677L24.2886 33.2461L20.753 29.7107L1.2322 49.2323L4.7678 52.7677Z"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Aromatizantes</h2>
+      </div>
+      <!-- Aromatizantes (dropdown tipo) -->
+      <div *ngFor="let product of getFlavoringProducts(); let i = index">
+        <div class="nobreak-container" id="largegap">
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" (mousedown)="selectFlavoring(product, i)" [ngClass]="{'no-flavoring-selected':!isFlavoringSelected(i)}">
+              {{ getSelectedFlavoringName(i) || product.name }}
+            </button>
+          </div>
+          <!-- Aromatizantes (dropdown qtd) -->
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" [disabled]="!isFlavoringSelected(i)" [ngClass]="{'no-flavoring-selected':!isFlavoringSelected(i)}">
+              {{ getSelectedFlavoringQuantity(i) || product.quantity }}{{ product.quantity === 1 ? ' unidade' : ' unidades' }}
+              <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+                <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isFlavoringSelected(i) ? '#41A76A' : '#f52c2cb9'"/>
+              </svg>
+              <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+                <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z" [attr.fill]="isFlavoringSelected(i) ? 'white' : '#654D4D'"/>
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a *ngIf="isFlavoringSelected(i)" (mousedown)="selectFlavoringQuantity(1, i)">1 unidade</a>
+              <a *ngIf="isFlavoringSelected(i)" (mousedown)="selectFlavoringQuantity(2, i)">2 unidades</a>
+              <a *ngIf="isFlavoringSelected(i)" (mousedown)="selectFlavoringQuantity(3, i)">3 unidades</a>
+              <a *ngIf="isFlavoringSelected(i)" (mousedown)="selectFlavoringQuantity(5, i)">5 unidades</a>
+              <a *ngIf="isFlavoringSelected(i)" (mousedown)="selectFlavoringQuantity(10, i)">10 unidades</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Aromatizantes (valor) -->
+      <div *ngIf="getFlavoringProducts().length > 0" class="nobreak-container" id="minigap-baseline">
+        <h4 class="Poppins-Regular">Valor: </h4>
+        <h3 class="Poppins-Regular">R$ {{ getUpdatedFlavoringValue() }}</h3>
+      </div>
+
+      <div *ngIf="getFlavoringProducts().length > 0" class="divider"></div>
+
+      <!-- Adoçantes -->
+      <div *ngIf="getSweetenerProducts().length > 0" class="nobreak-container">
+        <svg class="main-icon" id="sweetener-icon" viewBox="0 0 43 48" fill="none">
+            <path d="M40.8712 31.9014L27.1861 24L40.8712 16.0986C41.5599 15.7006 42.0624 15.0453 42.2682 14.2769C42.474 13.5084 42.3662 12.6897 41.9685 12.0008C41.5708 11.3118 40.9158 10.809 40.1474 10.6028C39.3791 10.3966 38.5603 10.504 37.8712 10.9014L24.1852 18.8033V3C24.1852 2.20435 23.8691 1.44129 23.3065 0.87868C22.7439 0.316071 21.9808 0 21.1852 0C20.3895 0 19.6264 0.316071 19.0638 0.87868C18.5012 1.44129 18.1852 2.20435 18.1852 3V18.8033L4.49916 10.9013C3.80999 10.5039 2.99123 10.3965 2.2229 10.6027C1.45457 10.8089 0.799549 11.3117 0.401857 12.0007C0.0041656 12.6896 -0.103648 13.5083 0.10212 14.2768C0.307887 15.0452 0.810394 15.7005 1.49916 16.0985L15.1842 24L1.49916 31.9014C0.810394 32.2994 0.307887 32.9547 0.10212 33.7231C-0.103648 34.4916 0.0041656 35.3103 0.401857 35.9992C0.799549 36.6882 1.45457 37.191 2.2229 37.3972C2.99123 37.6034 3.80999 37.496 4.49916 37.0986L18.1852 29.1967V45C18.1852 45.7957 18.5012 46.5587 19.0638 47.1213C19.6264 47.6839 20.3895 48 21.1852 48C21.9808 48 22.7439 47.6839 23.3065 47.1213C23.8691 46.5587 24.1852 45.7957 24.1852 45V29.1967L37.8712 37.0987C38.5603 37.4961 39.3791 37.6035 40.1474 37.3973C40.9158 37.1911 41.5708 36.6883 41.9685 35.9993C42.3662 35.3104 42.474 34.4917 42.2682 33.7232C42.0624 32.9548 41.5599 32.2995 40.8712 31.9015V31.9014Z"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Adoçantes</h2>
+      </div>
+      <!-- Adoçantes (dropdown tipo) -->
+      <div *ngIf="getSweetenerProducts().length > 0" class="nobreak-container" id="largegap">
+        <div class="dropdown">
+          <button class="dropdown-btn nobreak-container" id="minigap" [ngClass]="{'no-sweetener-selected':!isSweetenerSelected()}">
+            {{ selectedSweetener?.name || getFirstSweetener()?.name }}
+            <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+              <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isSweetenerSelected() ? '#41A76A' : '#f52c2cb9'"/>
+            </svg>
+            <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+              <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z"/>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a *ngFor="let product of getSweetenerProducts()" (mousedown)="selectSweetener(product)">
+              {{ product.name }}
+            </a>
+          </div>
+        </div>
+        <!-- Adoçantes (dropdown qtd) -->
+        <div class="dropdown">
+          <button class="dropdown-btn nobreak-container" id="minigap" [disabled]="!isSweetenerSelected()" [ngClass]="{'no-sweetener-selected':!isSweetenerSelected()}">
+            {{ selectedSweetener?.quantityMl || getFirstSweetener()?.quantityMl }}g
+            <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+              <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isSweetenerSelected() ? '#41A76A' : '#f52c2cb9'"/>
+            </svg>
+            <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+              <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z" [attr.fill]="isSweetenerSelected() ? 'white' : '#654D4D'"/>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a (mousedown)="selectSweetenerMl(1000)">1kg</a>
+            <a (mousedown)="selectSweetenerMl(750)">750g</a>
+            <a (mousedown)="selectSweetenerMl(500)">500g</a>
+            <a (mousedown)="selectSweetenerMl(250)">250g</a>
+            <a (mousedown)="selectSweetenerMl(100)">100g</a>
+          </div>
+        </div>
+      </div>
+      <!-- Adoçantes (btn X) -->
+      <button *ngIf="isSweetenerSelected()" class="del-btn" (click)="deselectSweetener()">
+        <svg class="del-icon" viewBox="0 0 72 72" fill="none">
+          <path opacity="0.4" d="M36 66C52.5685 66 66 52.5685 66 36C66 19.4315 52.5685 6 36 6C19.4315 6 6 19.4315 6 36C6 52.5685 19.4315 66 36 66Z"/>
+          <path d="M39.1801 36L46.0801 29.1C46.9501 28.23 46.9501 26.79 46.0801 25.92C45.2101 25.05 43.7701 25.05 42.9001 25.92L36.0001 32.82L29.1001 25.92C28.2301 25.05 26.7901 25.05 25.9201 25.92C25.0501 26.79 25.0501 28.23 25.9201 29.1L32.8201 36L25.9201 42.9C25.0501 43.77 25.0501 45.21 25.9201 46.08C26.3701 46.53 26.9401 46.74 27.5101 46.74C28.0801 46.74 28.6501 46.53 29.1001 46.08L36.0001 39.18L42.9001 46.08C43.3501 46.53 43.9201 46.74 44.4901 46.74C45.0601 46.74 45.6301 46.53 46.0801 46.08C46.9501 45.21 46.9501 43.77 46.0801 42.9L39.1801 36Z" fill="white"/>
+        </svg>
+      </button>
+      <!-- Adoçantes (valor) -->
+      <div *ngIf="getSweetenerProducts().length > 0" class="nobreak-container" id="minigap-baseline">
+        <h4 class="Poppins-Regular">Valor: </h4>
+        <h3 class="Poppins-Regular">R$ {{ getUpdatedSweetenerValue() }}</h3>
+      </div>
+
+      <div *ngIf="getSweetenerProducts().length > 0" class="divider"></div>
+
+      <!-- Diversos -->
+      <div *ngIf="getMiscProducts().length > 0" class="nobreak-container">
+        <svg class="main-icon" id="misc-icon" viewBox="0 0 60 54" fill="none">
+          <path d="M33 0C27.4305 8.29927e-08 22.089 2.21249 18.1508 6.15076C14.2125 10.089 12 15.4305 12 21C12 26.5695 14.2125 31.911 18.1508 35.8492C22.089 39.7875 27.4305 42 33 42C36.9782 42 40.7936 40.4196 43.6066 37.6066C46.4196 34.7936 48 30.9782 48 27C48 23.0218 46.4196 19.2064 43.6066 16.3934C40.7936 13.5804 36.9782 12 33 12C30.6131 12 28.3239 12.9482 26.636 14.636C24.9482 16.3239 24 18.6131 24 21C24 23.3869 24.9482 25.6761 26.636 27.364C28.3239 29.0518 30.6131 30 33 30C33.7957 30 34.5587 29.6839 35.1213 29.1213C35.6839 28.5587 36 27.7956 36 27C36 26.2044 35.6839 25.4413 35.1213 24.8787C34.5587 24.3161 33.7957 24 33 24C32.2043 24 31.4413 23.6839 30.8787 23.1213C30.3161 22.5587 30 21.7956 30 21C30 20.2044 30.3161 19.4413 30.8787 18.8787C31.4413 18.3161 32.2043 18 33 18C35.3869 18 37.6761 18.9482 39.364 20.636C41.0518 22.3239 42 24.6131 42 27C42 29.3869 41.0518 31.6761 39.364 33.364C37.6761 35.0518 35.3869 36 33 36C29.0218 36 25.2064 34.4196 22.3934 31.6066C19.5804 28.7936 18 24.9782 18 21C18 17.0218 19.5804 13.2064 22.3934 10.3934C25.2064 7.58035 29.0218 6 33 6C38.5695 6 43.911 8.21249 47.8492 12.1508C51.7875 16.089 54 21.4305 54 27C54 32.5695 51.7875 37.911 47.8492 41.8492C43.911 45.7875 38.5695 48 33 48C25.8392 48 18.9716 45.1554 13.9081 40.0919C8.84463 35.0284 6 28.1608 6 21C6 20.2044 5.68393 19.4413 5.12132 18.8787C4.55871 18.3161 3.79565 18 3 18C2.20435 18 1.44129 18.3161 0.87868 18.8787C0.31607 19.4413 0 20.2044 0 21C0 29.7521 3.47678 38.1458 9.66548 44.3345C15.8542 50.5232 24.2479 54 33 54C40.1608 54 47.0284 51.1554 52.0919 46.0919C57.1554 41.0284 60 34.1608 60 27C60 19.8392 57.1554 12.9716 52.0919 7.90812C47.0284 2.84463 40.1608 1.06705e-07 33 0Z"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Diversos</h2>
+      </div>
+      <!-- Diversos (dropdown tipo) -->
+      <div *ngFor="let product of getMiscProducts(); let i = index">
+        <div class="nobreak-container" id="largegap">
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" (mousedown)="selectMisc(product, i)" [ngClass]="{'no-misc-selected':!isMiscSelected(i)}">
+              {{ getSelectedMiscName(i) || product.name }}
+            </button>
+          </div>
+          <!-- Diversos (dropdown qtd) -->
+          <div class="dropdown">
+            <button class="dropdown-btn nobreak-container" [disabled]="!isMiscSelected(i)" [ngClass]="{'no-misc-selected':!isMiscSelected(i)}">
+              {{ +getSelectedMiscQuantity(i) === 1 || getSelectedMiscQuantity(i) === '' ? '50' : getSelectedMiscQuantity(i) }}g
+              <svg class="dropdown-divider" viewBox="0 0 4 58" fill="none">
+                <path d="M2 56L2 2" stroke-width="3" stroke-linecap="round" [attr.stroke]="isMiscSelected(i) ? '#41A76A' : '#f52c2cb9'"/>
+              </svg>
+              <svg class="dropdown-arrow" viewBox="0 0 40 40" fill="none">
+                <path d="M29.8667 13.6333H19.4834H10.1334C8.5334 13.6333 7.7334 15.5667 8.86674 16.7L17.5001 25.3333C18.8834 26.7167 21.1334 26.7167 22.5167 25.3333L25.8001 22.05L31.1501 16.7C32.2667 15.5667 31.4667 13.6333 29.8667 13.6333Z" [attr.fill]="isMiscSelected(i) ? 'white' : '#654D4D'"/>
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a *ngIf="isMiscSelected(i)" (mousedown)="selectMiscQuantity(50, i)">50g</a>
+              <a *ngIf="isMiscSelected(i)" (mousedown)="selectMiscQuantity(100, i)">100g</a>
+              <a *ngIf="isMiscSelected(i)" (mousedown)="selectMiscQuantity(250, i)">250g</a>
+              <a *ngIf="isMiscSelected(i)" (mousedown)="selectMiscQuantity(500, i)">500g</a>
+              <a *ngIf="isMiscSelected(i)" (mousedown)="selectMiscQuantity(750, i)">750g</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Diversos (valor) -->
+      <div *ngIf="getMiscProducts().length > 0" class="nobreak-container" id="minigap-baseline">
+        <h4 class="Poppins-Regular">Valor: </h4>
+        <h3 class="Poppins-Regular">R$ {{ getUpdatedMiscValue() }}</h3>
+      </div>
+
+      <div *ngIf="getMiscProducts().length > 0" class="divider"></div>
+
+      <!-- Quantidade -->
+      <div class="nobreak-container">
+        <svg class="main-icon" id="qtt-icon" viewBox="0 0 76 76" fill="none">
+            <circle cx="7.14286" cy="7.14286" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="37.9998" cy="7.14286" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="68.8572" cy="7.14286" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="7.14286" cy="38" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="37.9998" cy="38" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="68.8572" cy="38" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="7.14286" cy="68.8572" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="37.9998" cy="68.8572" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="68.8572" cy="68.8572" r="5.14286" stroke="#41A76A" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Quantidade</h2>
+        <!-- Quantidade (spinner) -->
+        <div class="spinner">
+          <span id="qtt">{{qtt}}</span>
+          <svg class="spinner-divider" viewBox="0 0 4 58" fill="none">
+            <path d="M2 56L2 2" stroke="#41A76A" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <button class="spinner-decrease-btn" (click)="decrease()" [disabled]="qtt === 1">
+            <svg class="spinner-decrease-icon" viewBox="0 0 30 4" fill="none">
+              <path d="M28.3332 2.00016H1.6665" stroke-width="3" stroke-linecap="round" [style.stroke]="qtt === 1 ? '#4D6557' : 'white'"/>
+            </svg>
+          </button>
+          <svg class="spinner-divider" viewBox="0 0 4 58" fill="none">
+            <path d="M2 56L2 2" stroke="#41A76A" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <button class="spinner-increase-btn" (click)="increase()">
+            <svg class="spinner-increase-icon" viewBox="0 0 30 30" fill="none">
+              <path d="M28.3332 15.0002H1.6665" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <path d="M15.0002 1.6665V28.3332" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- $ -->
+      <div class="nobreak-container">
+        <svg class="main-icon" id="sum-icon" viewBox="0 0 72 72" fill="none">
+            <path d="M32.52 40.6201H28.02C24.57 40.6201 21.78 37.7401 21.78 34.1701C21.78 32.9401 22.8 31.9201 24.03 31.9201C25.26 31.9201 26.28 32.9401 26.28 34.1701C26.28 35.2501 27.06 36.1201 28.02 36.1201H32.52C33.21 36.1201 33.75 35.4901 33.75 34.7101C33.75 33.6601 33.57 33.6001 32.88 33.3601L25.65 30.8401C23.04 29.9401 21.75 28.1101 21.75 25.2601C21.75 22.0201 24.33 19.3501 27.48 19.3501H31.98C35.43 19.3501 38.22 22.2301 38.22 25.8001C38.22 27.0301 37.2 28.0501 35.97 28.0501C34.74 28.0501 33.72 27.0301 33.72 25.8001C33.72 24.7201 32.94 23.8501 31.98 23.8501H27.48C26.79 23.8501 26.25 24.4801 26.25 25.2601C26.25 26.3101 26.43 26.3701 27.12 26.6101L34.35 29.1301C36.96 30.0601 38.22 31.8901 38.22 34.7101C38.25 37.9801 35.67 40.6201 32.52 40.6201Z"/>
+            <path d="M30 43.02C28.77 43.02 27.75 42 27.75 40.77V38.55C27.75 37.32 28.77 36.3 30 36.3C31.23 36.3 32.25 37.32 32.25 38.55V40.77C32.25 42.03 31.23 43.02 30 43.02Z"/>
+            <path d="M30 23.82C28.77 23.82 27.75 22.8 27.75 21.57V19.23C27.75 18 28.77 16.98 30 16.98C31.23 16.98 32.25 18 32.25 19.23V21.57C32.25 22.8 31.23 23.82 30 23.82Z"/>
+            <path d="M29.97 56.16C15.51 56.16 3.75 44.4 3.75 29.94C3.75 15.48 15.51 3.71997 29.97 3.71997C44.43 3.71997 56.19 15.48 56.19 29.94C56.19 44.4 44.4 56.16 29.97 56.16ZM29.97 8.24997C18 8.24997 8.25 18 8.25 29.97C8.25 41.94 18 51.66 29.97 51.66C41.94 51.66 51.69 41.91 51.69 29.94C51.69 17.97 41.94 8.24997 29.97 8.24997Z"/>
+            <path d="M51.0601 68.1601C45.5101 68.1601 40.2901 65.4601 37.0801 60.9001C36.3601 59.8801 36.6001 58.4701 37.6201 57.7501C38.6401 57.0301 40.0501 57.2701 40.7701 58.2901C43.1401 61.6501 46.9801 63.6301 51.0601 63.6301C58.0201 63.6301 63.6601 57.9901 63.6601 51.0301C63.6601 46.9801 61.6801 43.1401 58.3801 40.7701C57.3601 40.0501 57.1501 38.6401 57.8701 37.6201C58.5901 36.6001 60.0001 36.3901 61.0201 37.1101C65.4901 40.3201 68.1601 45.5101 68.1601 51.0301C68.1601 60.5101 60.5101 68.1601 51.0601 68.1601Z"/>
+        </svg>
+        <h2 class="Poppins-ExtraLight">Total</h2>
+      </div>
+
+      <h1 class="Poppins-Bold" id="underlined">R$ {{ getTotalValue() }}</h1>
+
+      <h3 class="Poppins-ExtraLight">Taxas de entrega e serviço não inclusas.</h3>
+
+      <!-- Botões de compra -->
+      <div class="btn-container nobreak-container">
+        <!-- Adicionar ao arrinho -->
+        <button class="btn" id="cart-btn" (click)="addToCart() && closePopUp()">
+          <svg class="cart-btn-icon" viewBox="0 0 80 80" fill="none">
+            <path d="M75.8834 55.9141H19.9693C18.9101 55.9141 17.8942 55.4933 17.1452 54.7443C16.3962 53.9953 15.9755 52.9795 15.9755 51.9202C15.9755 50.861 16.3962 49.8452 17.1452 49.0962C17.8942 48.3472 18.9101 47.9264 19.9693 47.9264H61.6653C64.3358 47.9265 66.9298 47.0345 69.0354 45.392C71.1411 43.7495 72.6376 41.4505 73.2874 38.8603L79.8773 12.9401C80.0269 12.3507 80.0399 11.7348 79.9153 11.1396C79.7907 10.5443 79.5318 9.9854 79.1584 9.5054C78.77 9.01309 78.2711 8.61915 77.7021 8.35548C77.1332 8.09182 76.5101 7.96583 75.8834 7.98773H19.0108C18.1868 5.65711 16.6621 3.6384 14.6458 2.20836C12.6294 0.778319 10.2201 0.00694737 7.7481 0H3.99387C2.93463 0 1.91877 0.420781 1.16978 1.16978C0.420781 1.91877 0 2.93463 0 3.99387C0 5.0531 0.420781 6.06896 1.16978 6.81795C1.91877 7.56695 2.93463 7.98773 3.99387 7.98773H7.7481C8.66044 7.96115 9.55435 8.24786 10.281 8.80014C11.0077 9.35241 11.5233 10.1369 11.742 11.0231L11.9816 12.9401L18.891 39.9387C15.7133 40.0816 12.7225 41.4811 10.5766 43.8292C8.43076 46.1773 7.30556 49.2817 7.44856 52.4594C7.59156 55.6371 8.99104 58.6279 11.3391 60.7738C13.6872 62.9196 16.7916 64.0448 19.9693 63.9018H20.6882C20.0314 65.7116 19.8203 67.653 20.0729 69.5616C20.3255 71.4702 21.0343 73.2898 22.1393 74.8664C23.2443 76.443 24.7129 77.7301 26.4208 78.6187C28.1288 79.5073 30.0257 79.9713 31.9509 79.9713C33.8762 79.9713 35.7731 79.5073 37.481 78.6187C39.1889 77.7301 40.6576 76.443 41.7626 74.8664C42.8676 73.2898 43.5764 71.4702 43.829 69.5616C44.0815 67.653 43.8705 65.7116 43.2136 63.9018H52.6391C51.9823 65.7116 51.7712 67.653 52.0238 69.5616C52.2764 71.4702 52.9852 73.2898 54.0902 74.8664C55.1952 76.443 56.6638 77.7301 58.3717 78.6187C60.0797 79.5073 61.9766 79.9713 63.9018 79.9713C65.8271 79.9713 67.724 79.5073 69.4319 78.6187C71.1399 77.7301 72.6085 76.443 73.7135 74.8664C74.8185 73.2898 75.5273 71.4702 75.7799 69.5616C76.0325 67.653 75.8214 65.7116 75.1645 63.9018H75.8834C76.9427 63.9018 77.9585 63.4811 78.7075 62.7321C79.4565 61.9831 79.8773 60.9672 79.8773 59.908C79.8773 58.8487 79.4565 57.8329 78.7075 57.0839C77.9585 56.3349 76.9427 55.9141 75.8834 55.9141ZM70.7713 15.9755L65.5393 36.9033C65.3207 37.7895 64.8051 38.574 64.0784 39.1262C63.3517 39.6785 62.4578 39.9652 61.5455 39.9387H27.0784L21.0876 15.9755H70.7713ZM31.9509 71.8896C31.161 71.8896 30.3888 71.6553 29.732 71.2165C29.0753 70.7776 28.5634 70.1539 28.2611 69.4241C27.9588 68.6943 27.8797 67.8913 28.0338 67.1165C28.1879 66.3418 28.5683 65.6302 29.1268 65.0716C29.6854 64.5131 30.397 64.1327 31.1718 63.9786C31.9465 63.8245 32.7495 63.9036 33.4793 64.2059C34.2091 64.5081 34.8328 65.0201 35.2717 65.6768C35.7105 66.3336 35.9448 67.1058 35.9448 67.8957C35.9448 68.9549 35.524 69.9708 34.775 70.7198C34.026 71.4688 33.0102 71.8896 31.9509 71.8896ZM63.9018 71.8896C63.1119 71.8896 62.3398 71.6553 61.683 71.2165C61.0262 70.7776 60.5143 70.1539 60.212 69.4241C59.9097 68.6943 59.8306 67.8913 59.9847 67.1165C60.1388 66.3418 60.5192 65.6302 61.0777 65.0716C61.6363 64.5131 62.3479 64.1327 63.1227 63.9786C63.8974 63.8245 64.7004 63.9036 65.4302 64.2059C66.16 64.5081 66.7838 65.0201 67.2226 65.6768C67.6615 66.3336 67.8957 67.1058 67.8957 67.8957C67.8957 68.9549 67.4749 69.9708 66.7259 70.7198C65.9769 71.4688 64.9611 71.8896 63.9018 71.8896Z"/>
+          </svg>
+          Adicionar ao carrinho
+        </button>
+        <!-- Comprar -->
+        <button class="btn" id="buy-btn" (click)="addToCart() && redirectToCheckout()">
+          <svg class="buy-btn-icon" viewBox="0 0 80 80" fill="none">
+              <path d="M13.1001 55.4334C12.4667 55.4334 11.8334 55.2001 11.3334 54.7001C10.3667 53.7334 10.3667 52.1334 11.3334 51.1667L51.1667 11.3334C52.1334 10.3667 53.7334 10.3667 54.7001 11.3334C55.6667 12.3001 55.6667 13.9001 54.7001 14.8667L14.8667 54.7334C14.4001 55.2001 13.7334 55.4334 13.1001 55.4334Z"/>
+              <path d="M37 63.4333C36.3666 63.4333 35.7333 63.2 35.2333 62.7C34.2666 61.7333 34.2666 60.1333 35.2333 59.1667L39.2333 55.1667C40.2 54.2 41.8 54.2 42.7666 55.1667C43.7333 56.1333 43.7333 57.7333 42.7666 58.7L38.7666 62.7C38.3 63.1667 37.6666 63.4333 37 63.4333Z"/>
+              <path d="M45.9668 54.4666C45.3334 54.4666 44.7001 54.2333 44.2001 53.7333C43.2334 52.7666 43.2334 51.1666 44.2001 50.2L52.1668 42.2333C53.1334 41.2666 54.7334 41.2666 55.7001 42.2333C56.6668 43.2 56.6668 44.8 55.7001 45.7666L47.7334 53.7333C47.2668 54.2 46.6001 54.4666 45.9668 54.4666Z"/>
+              <path d="M36.9999 75.8335C33.7332 75.8335 30.4665 73.8335 26.4999 69.8668L10.1332 53.5001C2.16654 45.5335 2.19988 40.4001 10.2332 32.3668L32.3665 10.2335C40.3999 2.20012 45.5332 2.16679 53.4999 10.1335L69.8665 26.5001C77.8332 34.4668 77.7999 39.6001 69.7665 47.6335L47.6332 69.7668C43.5999 73.8001 40.2999 75.8335 36.9999 75.8335ZM42.9999 9.16679C41.2665 9.16679 39.0665 10.6001 35.8999 13.7668L13.7665 35.9001C10.5999 39.0668 9.16654 41.2668 9.16654 42.9668C9.16654 44.7001 10.4999 46.8001 13.6665 49.9668L30.0332 66.3335C33.1999 69.5001 35.2665 70.8335 36.9999 70.8335C36.9999 70.8335 36.9999 70.8335 37.0332 70.8335C38.7665 70.8335 40.9332 69.4001 44.0999 66.2335L66.2332 44.1001C69.3999 40.9335 70.8332 38.7335 70.8332 37.0335C70.8332 35.3001 69.4999 33.2001 66.3332 30.0335L49.9665 13.6668C46.8332 10.5001 44.7332 9.16679 42.9999 9.16679Z"/>
+              <path d="M73.3332 75.8333H6.6665C5.29984 75.8333 4.1665 74.6999 4.1665 73.3333C4.1665 71.9666 5.29984 70.8333 6.6665 70.8333H73.3332C74.6998 70.8333 75.8332 71.9666 75.8332 73.3333C75.8332 74.6999 74.6998 75.8333 73.3332 75.8333Z"/>
+          </svg>
+          Comprar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>

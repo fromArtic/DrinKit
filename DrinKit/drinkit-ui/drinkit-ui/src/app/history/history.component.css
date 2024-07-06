@@ -1,0 +1,464 @@
+body {
+  height: fit-content;
+  min-height: 100%;
+  padding-bottom: 3.2vh;
+  background-color: black;
+}
+
+.nobreak-container {
+  display: flex;
+  align-items: center;
+  gap: 1.7vh;
+}
+
+/* Navbar / Letreiro da página */
+
+.navbar {
+  padding: 3.5vh 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-left, .navbar-right {
+  display: flex;
+}
+
+.navbar-btn {
+  margin-right: 5.5vh;
+  padding: 0;
+  display: flex;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.hidden-item {
+  width: 9.4vh;
+}
+
+#cart-btn {
+  margin-left: .1vh;
+}
+
+#user-btn {
+  margin-left: .7vh;
+}
+
+#user-btn, .hidden-item {
+  margin-right: 0;
+}
+
+.navbar-icon {
+  fill: white;
+  transition: transform .1s;
+}
+
+.navbar-icon:hover {
+  transform: scale(1.1);
+}
+
+#help-icon {
+  width: 3.4vh;
+}
+
+#box-icon, #notification-icon, #user-icon {
+  width: 4.1vh;
+}
+
+#cart-icon {
+  width: 4vh;
+}
+
+.counter {
+  width: 3.3vh;
+  height: 3.3vh;
+  margin-right: -.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  font-family: Poppins-Bold;
+  font-size: 1.6vh;
+}
+
+#notification-counter {
+  margin-right: -1.3vh;
+}
+
+.page-label {
+  padding: 2.9vh;
+  text-align: center;
+  background-color: white;
+}
+
+.page-label h2 {
+  color: black;
+}
+
+/* Dropdown (navbar) */
+
+.dropdown-content {
+  position: absolute;
+  width: max-content;
+  margin-top: .5vh;
+  z-index: 1;
+  display: none;
+  background-color: #f9f9f9;
+  border-radius: .5vh;
+  box-shadow: 0 .85vh 1.7vh 0 rgba(0, 0, 0, .2);
+  font-family: Poppins-Light;
+  font-size: 1.9vh;
+}
+
+#notification-content {
+  width: 14vh;
+}
+
+.navbar-btn:focus + .dropdown-content {
+  display: block;
+}
+
+.dropdown-content span, .dropdown-content a {
+  display: block;
+  padding: 1.3vh 1.7vh;
+  border-radius: .5vh;
+}
+
+.dropdown-content a {
+  color: black;
+}
+
+.dropdown-content span:hover, .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-content a:hover {
+  font-weight: bold;
+}
+
+.dropdown-icon {
+  margin-bottom: .5vh;
+  display: flex;
+  fill: black;
+}
+
+#checkout-icon {
+  width: 2.5vh;
+}
+
+#empty-cart-icon {
+  width: 2vh;
+}
+
+#profile-icon {
+  width: 2.4vh;
+}
+
+#history-icon {
+  width: 2.4vh;
+}
+
+#logout {
+  color: #F52C2C;
+}
+
+#logout-icon {
+  width: 3.3vh;
+  fill: #F52C2C;
+}
+
+/* Filtros / Ordem */
+
+.filters {
+  padding-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transition: margin-left .3s;
+}
+
+#filter {
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+#filter:hover, .active-filter {
+  font-family: Poppins-SemiBold;
+}
+
+.active-filter {
+  text-decoration: underline;
+}
+
+.sort-btn {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.sort-btn:hover span {
+  font-family: Poppins-SemiBold;
+  color: #F68E63;
+}
+
+.sort-icon {
+  width: 4.2vh;
+  fill: white;
+}
+
+#divider-dot {
+  margin: 0 .2vh;
+}
+
+.minitext {
+  font-family: Poppins-Light;
+  font-size: 2vh;
+  font-weight: lighter;
+}
+
+/* Card pedido */
+
+.purchase-card {
+  margin: 0 32.5vh;
+  margin-top: 5vh;
+  padding: 7vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #181818;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: left;
+}
+
+#row-kit-description, .row-tax {
+  align-items: baseline;
+}
+
+#row-kit-description {
+  justify-content: space-around;
+}
+
+.row-tax {
+  justify-content: right;
+}
+
+.drink-card {
+  width: 82vh;
+  height: 42vh;
+  margin-bottom: 5vh;
+  padding: 2vh;
+  display: flex;
+  justify-content: center;
+  background-color: #353535;
+  outline: 0 solid transparent;
+  transition: outline .2s ease-in-out, width .3s;
+}
+
+.drink-card:hover {
+  outline: .25vh solid #414141;
+}
+
+.drink-img {
+  width: 98%;
+  min-height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform .2s ease-out;
+}
+
+.drink-card:hover .drink-img {
+  transform: scale(1.06);
+}
+
+.purchase-card, .drink-card {
+  border-radius: 3.5vh;
+}
+
+.divider {
+  width: 100%;
+  margin-top: 3vh;
+  border: .01vh solid rgba(193, 193, 193, 0);
+  box-shadow: 0 .1vh 0 0 rgba(193, 193, 193, .4);
+}
+
+/* Ícones (card) */
+
+#purchase-total-icon, 
+#status-icon-processing, #status-icon-preparing, #status-icon-transporting, #status-icon-delivered, #status-icon-canceled {
+  margin-right: 2vh;
+}
+
+#purchase-total-icon {
+  width: 5vh;
+}
+
+#status-icon-processing, #status-icon-preparing, #status-icon-transporting, #status-icon-delivered, #status-icon-canceled {
+  width: 4.5vh;
+}
+
+#purchase-total-icon, #status-icon-delivered {
+  fill: #41A76A;
+}
+
+#status-icon-processing, #status-icon-preparing {
+  fill: #F68E63;
+}
+
+#status-icon-transporting {
+  stroke: #F68E63;
+}
+
+#status-icon-canceled {
+  fill: #F52C2C;
+}
+
+/* Texto (card) */
+
+#total-value, #kit-label, #kit-label-qtt-value, #kit-value {
+  font-size: 3.6vh;
+}
+
+#status-ongoing, #status-delivered, #status-canceled, #kit-label-qtt, #kit-value-label, #tax {
+  font-size: 2.8vh;
+}
+
+#purchase-date, #delivery-estimate, #tax-label {
+  font-size: 1.9vh;
+}
+
+#kit-label, #kit-label-qtt, #kit-label-qtt-value, #kit-value-label {
+  color: white;
+}
+
+#purchase-date, #delivery-estimate, #tax, #tax-label {
+  color: #BABDCC;
+}
+
+#total-value, #status-delivered, #kit-value {
+  color: #41A76A;
+}
+
+#status-ongoing {
+  color: #F68E63;
+}
+
+#status-canceled {
+  color: #F52C2C;
+}
+
+#tax {
+  margin-top: -3vh;
+}
+
+/* Texto (geral) */
+
+h1, h2, a {
+  margin: 0;
+  line-height: .9;
+}
+
+h1 {
+  font-size: 3.6vh;
+  color: white;
+}
+
+h2 {
+  font-size: 3.2vh;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#drinkit {
+  font-family: Sarpanch-Regular;
+  font-weight: lighter;
+  color: white;
+}
+
+#drinkit:hover {
+  color: #F68E63;
+}
+
+.header {
+  margin: 6vh 0;
+  margin-bottom: 3.5vh;
+  font-family: Poppins-Bold;
+  transition: margin-left .3s;
+}
+
+#underlined {
+  width: fit-content;
+  padding-bottom: 3.5vh;
+  border: .01vh solid rgba(193, 193, 193, 0);
+  box-shadow: 0 .4vh 0 0 white;
+}
+
+#no-purchases-warning {
+  padding-top: 5vh;
+  font-size: 3.2vh;
+  color: white;
+  transition: margin-left .3s;
+}
+
+/* Imagens */
+
+.stripe-bar {
+  min-height: 5.8vh;
+  background-image: url('images/stripes-green.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.mojito {
+  background-image: url('../home/home/images/mojito-light.png');
+}
+
+.caipirinha {
+  background-image: url('../home/home/images/caipirinha-light.png');
+}
+
+.martini {
+  background-image: url('../home/home/images/martini-light.png');
+}
+
+.shirley-temple {
+  background-image: url('../home/home/images/shirley-temple-light.png');
+}
+
+.bloody-mary {
+  background-image: url('../home/home/images/bloody-mary-light.png');
+}
+
+/* Responsividade */
+
+@media (max-width: 1200px) {
+  .filters, .header, #no-purchases-warning {
+    margin-left: 5vh;
+  }
+
+  .drink-card {
+    width: 100%;
+  }
+
+  #delivery-estimate {
+    margin-bottom: 5vh;
+  }
+}

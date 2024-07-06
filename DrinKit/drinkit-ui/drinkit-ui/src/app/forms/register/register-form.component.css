@@ -1,0 +1,299 @@
+.splitdiv {
+  width: 50%;
+  height: 153%;
+}
+
+#leftdiv {
+  float: left;
+  background-color: #E6EAF3;
+}
+
+#rightdiv {
+  float: right;
+  background-color: #6383FA;
+}
+
+.card > .left-align > div {
+  margin-bottom: 2.5vh;
+}
+
+.gap {
+  height: .1vh;
+}
+
+.minigap {
+  margin-top: 3.8vh;
+}
+
+.largegap {
+  height: .8vh;
+}
+
+.nobreak-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.nobreak-container-uncentered {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card */
+
+.card {
+  width: 90.8%;
+  height: 88.6%;
+  margin-top: 79.3vh;
+  transform: translateY(-50%);
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F6FA;
+  border-radius: 2.3% 0 0 2.3%;
+  box-shadow: .1vw .2vw 2vw -.3vw rgba(0, 0, 0, .12);
+  transition: width .3s, height .3s, border-radius .3s, background-color .3s;
+}
+
+.error-msg {
+  margin: 0;
+  line-height: .9;
+  font-family: Poppins-Medium;
+  font-size: 2.84vh;
+  color: #F52C2C;
+}
+
+/* Input */
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding-bottom: 2.5vh;
+  padding-left: 7.3vh;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 .1vh 0 0 rgb(0, 0, 0);
+  font-family: Poppins-Regular;
+  font-size: 2.84vh;
+  color: black;
+  transition: box-shadow .3s ease;
+}
+
+.input-field::placeholder {
+  font-family: Poppins-ExtraLight;
+  font-weight: lighter;
+  color: #B0B0B0;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 .32vh 0 0 #003465;
+}
+
+.input-icon {
+  position: absolute;
+  width: 3.54vh;
+  padding-bottom: 2.5vh;
+  fill: #BABDCC;
+  transition: fill .3s ease;
+}
+
+.input-field:focus + #email-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #email-icon.input-icon {
+  fill: #e7d389;
+}
+
+.input-field:focus + #name-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #name-icon.input-icon {
+  fill: #B0BDFF;
+}
+
+.input-field:focus + #birthdate-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #birthdate-icon.input-icon {
+  fill: #F2BAE6;
+}
+
+.input-field:focus + #password-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #password-icon.input-icon {
+  fill: #d3b59b;
+}
+
+.input-field:focus + #repeated-password-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #repeated-password-icon.input-icon {
+  fill: #EAB86E;
+}
+
+#password-input {
+  font-weight: bold;
+  letter-spacing: 1.2vh;
+}
+
+#password-input::placeholder {
+  letter-spacing: normal;
+}
+
+.password-toggle-btn {
+  padding-left: 5%;
+  padding-right: 0;
+  border-right: 0;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.password-toggle-icon {
+  width: 3.54vh;
+  padding-bottom: 2.5vh;
+}
+
+/* Botão */
+
+.btn {
+  width: 100%;
+  height: 5.15vh;
+  background-color: #528279;
+  border: none;
+  border-radius: 1.3vh;
+  box-shadow: 0 .2vh .35vh rgba(0, 0, 0, .3);
+  font-family: Poppins-Medium;
+  font-size: 2.84vh;
+  letter-spacing: .115em;
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn:hover {
+  background-color: #3DADBD;
+}
+
+.btn:active {
+  background-color: #1B4D54;
+}
+
+/* Texto */
+
+h1, h2, h3, a {
+  margin: 0;
+  line-height: .9;
+}
+
+h1 {
+  font-size: 4.3vh;
+  color: black;
+}
+
+h2 {
+  font-size: 2.84vh;
+  color: #B0B0B0;
+}
+
+h3, a {
+  font-size: 1.83vh;
+}
+
+h3 {
+  color: #B0B0B0;
+  font-weight: lighter;
+}
+
+a {
+  color: #3CCFBE;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Imagens */
+
+.img {
+  position: absolute;
+  width: 100%;
+  max-width: 49vw;
+}
+
+#fractal-glass {
+  background-image: url('./images/fractal-glass-blue.png');
+  margin-top: 27vh;
+  height: 152%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#rectangle-fill {
+  background-image: url('./images/rectangle-fill.png');
+  position: fixed;
+  height: 310px;
+  top: 0;
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#rectangle-outline {
+  background-image: url('./images/rectangle-outline.png');
+  position: fixed;
+  height: 470px;
+  bottom: 0;
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Ícones */
+
+.back-arrow {
+  width: 2.2vh;
+  margin-left: -2.3vh;
+  fill: #3CCFBE;
+}
+
+.profile-picture {
+  width: 15vh;
+  fill: #BABDCC;
+  cursor: pointer;
+}
+
+.profile-picture:hover {
+  fill: #3CCFBE;
+}
+
+/* Responsividade */
+
+@media (max-width: 1150px) {
+  #rightdiv, #rectangle-fill, #rectangle-outline {
+    display: none;
+  }
+
+  #leftdiv {
+    width: 100%;
+    background-color: #6383FA;
+  }
+
+  #card {
+    width: 98%;
+    height: 85%;
+  }
+}

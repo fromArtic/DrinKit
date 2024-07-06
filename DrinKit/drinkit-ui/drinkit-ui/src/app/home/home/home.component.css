@@ -1,0 +1,431 @@
+body {
+  height: fit-content;
+  padding-bottom: 2vh;
+  background-color: black;
+}
+
+.nobreak-container {
+  display: flex;
+  align-items: center;
+  gap: 1.7vh;
+}
+
+/* Navbar / Letreiro da página */
+
+.navbar {
+  padding: 3.5vh 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-left, .navbar-right {
+  display: flex;
+}
+
+.navbar-btn {
+  margin-right: 5.5vh;
+  padding: 0;
+  display: flex;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.hidden-item {
+  width: 9.4vh;
+}
+
+#cart-btn {
+  margin-left: .1vh;
+}
+
+#user-btn {
+  margin-left: .7vh;
+}
+
+#user-btn, .hidden-item {
+  margin-right: 0;
+}
+
+.navbar-icon {
+  fill: white;
+  transition: transform .1s;
+}
+
+.navbar-icon:hover {
+  transform: scale(1.1);
+}
+
+#help-icon {
+  width: 3.4vh;
+}
+
+#box-icon, #notification-icon, #user-icon {
+  width: 4.1vh;
+}
+
+#cart-icon {
+  width: 4vh;
+}
+
+.counter {
+  width: 3.3vh;
+  height: 3.3vh;
+  margin-right: -.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  font-family: Poppins-Bold;
+  font-size: 1.6vh;
+}
+
+#notification-counter {
+  margin-right: -1.3vh;
+}
+
+.page-label {
+  padding: 2.9vh;
+  text-align: center;
+  background-color: white;
+}
+
+/* Dropdown (navbar) */
+
+.dropdown-content {
+  position: absolute;
+  width: max-content;
+  margin-top: .5vh;
+  z-index: 1;
+  display: none;
+  background-color: #f9f9f9;
+  border-radius: .5vh;
+  box-shadow: 0 .85vh 1.7vh 0 rgba(0, 0, 0, .2);
+  font-family: Poppins-Light;
+  font-size: 1.9vh;
+}
+
+#notification-content {
+  width: 14vh;
+}
+
+.navbar-btn:focus + .dropdown-content {
+  display: block;
+}
+
+.dropdown-content span, .dropdown-content a {
+  display: block;
+  padding: 1.3vh 1.7vh;
+  border-radius: .5vh;
+}
+
+.dropdown-content a {
+  color: black;
+}
+
+.dropdown-content span:hover, .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-content a:hover {
+  font-weight: bold;
+}
+
+.dropdown-icon {
+  margin-bottom: .5vh;
+  display: flex;
+  fill: black;
+}
+
+#checkout-icon {
+  width: 2.5vh;
+}
+
+#empty-cart-icon {
+  width: 2vh;
+}
+
+#profile-icon {
+  width: 2.4vh;
+}
+
+#history-icon {
+  width: 2.4vh;
+}
+
+#logout {
+  color: #F52C2C;
+}
+
+#logout-icon {
+  width: 3.3vh;
+  fill: #F52C2C;
+}
+
+/* Filtros / Ordem */
+
+.filters {
+  padding-top: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filter {
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+#filter:hover, .active-filter {
+  font-family: Poppins-SemiBold;
+}
+
+.active-filter {
+  text-decoration: underline;
+}
+
+.sort-btn {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.sort-btn:hover span {
+  font-family: Poppins-SemiBold;
+  color: #F68E63;
+}
+
+.sort-icon {
+  width: 4.5vh;
+  fill: white;
+}
+
+#divider-dot, .divider-line {
+  margin: 0 .8vh;
+}
+
+.divider-line {
+  width: .3vh;
+}
+
+.minitext {
+  font-family: Poppins-ExtraLight;
+  font-size: 2.7vh;
+  font-weight: lighter;
+}
+
+/* Barra de pesquisa */
+
+.searchbar {
+  padding: 4vh 0;
+  padding-bottom: 2.5vh;
+  display: flex;
+  align-items: center;
+}
+
+.searchbar-input {
+  width: 100%;
+  padding-bottom: 2.5vh;
+  padding-left: 7.3vh;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 .1vh 0 0 #B0B0B0;
+  font-family: Poppins-Light;
+  font-size: 2.7vh;
+  color: white;
+  transition: box-shadow .3s ease;
+}
+
+.searchbar-input::placeholder {
+  font-family: Poppins-ExtraLight;
+  font-weight: lighter;
+  color: #B0B0B0;
+}
+
+.searchbar-input:focus {
+  outline: none;
+  box-shadow: 0 .32vh 0 0 #F68E63;
+}
+
+.searchbar-icon {
+  position: absolute;
+  width: 4vh;
+  padding-bottom: 2.5vh;
+  stroke: white;
+  transition: fill .3s ease;
+}
+
+.searchbar-input:focus + .searchbar-icon, 
+.searchbar-input:not(:placeholder-shown) + .searchbar-icon {
+  stroke: #F68E63;
+}
+
+/* Drinks */
+
+.drink-selection {
+  margin: 1.5vh 23vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #1F1F1F;
+  border-radius: 3.5vh;
+}
+
+.drink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drink-selection, .drink {
+  gap: 3vh;
+}
+
+.card {
+  width: 35vh;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .2s ease-out;
+}
+
+.drink-selection, .card {
+  padding: 5vh;
+  border-radius: 3.5vh;
+}
+
+#dark-bg {
+  background-color: #181818;
+}
+
+#light-bg {
+  background-color: #353535;
+}
+
+.card-drink {
+  width: 100%;
+  transform: scale(1.1);
+  transition: transform .3s ease-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card:hover .card-drink {
+  transform: scale(1.23);
+}
+
+.card-description {
+  font-family: Poppins-SemiBold;
+  font-size: 3.8vh;
+  color: white;
+}
+
+.non-alcoholic-icon {
+  width: 3.5vh;
+  fill: white;
+}
+
+/* Texto */
+
+h1, h2, a {
+  margin: 0;
+  line-height: .9;
+}
+
+h1 {
+  font-size: 3.8vh;
+  color: white;
+}
+
+h2 {
+  font-size: 3.2vh;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#drinkit {
+  font-family: Sarpanch-Regular;
+  font-weight: lighter;
+  color: white;
+}
+
+#drinkit:hover {
+  color: #F68E63;
+}
+
+/* Imagens */
+
+.hero-image {
+  min-height: 64.4vh;
+  background-image: url('./images/hero-image.png');
+  background-position: center;
+  background-size: cover;
+}
+
+#mojito-dark, #mojito-light, 
+#caipirinha-dark, #caipirinha-light, 
+#martini-dark, #martini-light
+#shirley-temple-dark, #shirley-temple-light, 
+#bloody-mary-dark, #bloody-mary-light, 
+#pina-colada-dark, #pina-colada-light { 
+  min-height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#mojito-dark {
+  background-image: url('./images/mojito-dark.png');
+}
+#mojito-light {
+  background-image: url('./images/mojito-light.png');
+}
+
+#caipirinha-dark {
+  background-image: url('./images/caipirinha-dark.png');
+}
+#caipirinha-light {
+  background-image: url('./images/caipirinha-light.png');
+}
+
+#martini-dark {
+  background-image: url('./images/martini-dark.png');
+}
+#martini-light {
+  background-image: url('./images/martini-light.png');
+}
+
+#shirley-temple-dark, #shirley-temple-light {
+  width: 80%;
+  padding-top: 2.1vh;
+}
+#shirley-temple-dark {
+  background-image: url('./images/shirley-temple-dark.png');
+}
+#shirley-temple-light {
+  background-image: url('./images/shirley-temple-light.png');
+}
+
+#bloody-mary-dark {
+  background-image: url('./images/bloody-mary-dark.png');
+}
+#bloody-mary-light {
+  background-image: url('./images/bloody-mary-light.png');
+}
+
+#pina-colada-dark {
+  background-image: url('./images/pina-colada-dark.png');
+}
+#pina-colada-light {
+  background-image: url('./images/pina-colada-light.png');
+}

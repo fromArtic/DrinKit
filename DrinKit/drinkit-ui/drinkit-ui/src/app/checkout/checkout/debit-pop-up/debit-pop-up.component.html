@@ -1,0 +1,48 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="debit-pop-up.component.css" />
+  <title>Checkout PopUp</title>
+</head>
+
+<body>
+
+  <div class="popup">
+
+    <div class="cabeca">Crédito</div>
+    
+    <div class="popup-container" (click)="closePopupOutside($event)">
+      <div class="fecha">
+        <button class="close-button" (click)="close()">Fechar</button>
+      </div>
+    </div>
+
+    <div class="informacao">
+      <label for="nome">Nome registrado no cartão</label>
+      <div class="nome">
+        <input type="text" pInputText placeholder="Nome" />
+      </div>
+
+      <label for="numero">Número do cartão</label>
+      <div class="numero">
+        <input pInputText placeholder="8888-8888-8888-8888" />
+      </div>
+
+      <label for="small">Data de expiração / Código de seguraça</label>
+      <div class="small">
+        <div class="cvv">
+          <input class="incvv" type="text" pInputText placeholder="CVV" />
+        </div>
+
+        <div class="validade">
+          <input class="invalidade" type="text" pInputText placeholder="Validade" />
+        </div>
+      </div>
+    </div>
+
+    <div class="butao">
+      <button class="salvar" label="Salvar" icon="pi pi-check"> Salvar</button>
+    </div>
+
+  </div>
+
+</body>

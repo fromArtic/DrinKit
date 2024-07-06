@@ -1,0 +1,307 @@
+.splitdiv {
+  width: 50%;
+  height: 100%;
+}
+
+#leftdiv {
+  float: left;
+  background-color: #FDEEB8;
+}
+
+#rightdiv {
+  float: right;
+  background-color: #E6EAF3;
+}
+
+.card > .left-align > div {
+  margin-bottom: 2.5vh;
+}
+
+.gap {
+  height: .1vh;
+}
+
+.minigap {
+  margin-top: 3.8vh;
+}
+
+.largegap {
+  height: .8vh;
+}
+
+.horizontal-gap {
+  width: 100%;
+  height: 0;
+}
+
+.nobreak-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.nobreak-container-uncentered {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+/* Card */
+
+.card {
+  width: 89%;
+  height: 77%;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F6FA;
+  border-radius: 0 2.3% 2.3% 0;
+  box-shadow: .1vw .2vw 2vw -.3vw rgba(0, 0, 0, .12);
+  transition: width .3s, height .3s, border-radius .3s, background-color .3s;
+}
+
+.error-msg {
+  margin: 0;
+  line-height: .9;
+  font-family: Poppins-Medium;
+  font-size: 2.84vh;
+  color: #F52C2C;
+}
+
+/* Input */
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding-bottom: 2.5vh;
+  padding-left: 7.3vh;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 .1vh 0 0 rgb(0, 0, 0);
+  font-family: Poppins-Regular;
+  font-size: 2.84vh;
+  color: black;
+  transition: box-shadow .3s ease;
+}
+
+.input-field::placeholder {
+  font-family: Poppins-ExtraLight;
+  font-weight: lighter;
+  color: #B0B0B0;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 .32vh 0 0 #F68E63;
+}
+
+.input-icon {
+  position: absolute;
+  width: 3.54vh;
+  padding-bottom: 2.5vh;
+  fill: #BABDCC;
+  transition: fill .3s ease;
+}
+
+.input-field:focus + #email-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #email-icon.input-icon {
+  fill: #e7d389;
+}
+
+.input-field:focus + #password-icon.input-icon, 
+.input-field:not(:placeholder-shown) + #password-icon.input-icon {
+  fill: #d3b59b;
+}
+
+#password-input {
+  font-weight: bold;
+  letter-spacing: 1.2vh;
+}
+
+#password-input::placeholder {
+  font-weight: bold;
+  letter-spacing: 1.2vh;
+  color: #C9C9C9;
+}
+
+.password-toggle-btn {
+  padding-left: 5%;
+  padding-right: 0;
+  border-right: 0;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.password-toggle-icon {
+  width: 3.54vh;
+  padding-bottom: 2.5vh;
+}
+
+/* Botão */
+
+.btn {
+  width: 100%;
+  height: 5.15vh;
+  background-color: #867E61;
+  border: none;
+  border-radius: 1.3vh;
+  box-shadow: 0 .2vh .35vh rgba(0, 0, 0, .3);
+  font-family: Poppins-Medium;
+  font-size: 2.84vh;
+  letter-spacing: .115em;
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn:hover {
+  background-color: #F68E63;
+}
+
+.btn:active {
+  background-color: #61311D;
+}
+
+/* Checkbox */
+
+.cbx {
+  position: relative;
+  min-width: 2vh;
+  max-width: 2vh;
+  min-height: 2.04vh;
+  max-height: 2.04vh;
+  overflow: hidden;
+  display: block;
+  background-color: white;
+  border: .35vh solid rgba(255, 255, 255, 0);
+  border-radius: 30%;
+  box-shadow: 0 .2vh .32vh rgba(0, 0, 0, .4);
+  cursor: pointer;
+}
+
+.cbx div {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -52px;
+  left: -52px;
+  z-index: 100;
+  transform: rotateZ(45deg);
+  background-color: #F68E63;
+}
+
+.cbx input[type=checkbox]:checked + div {
+  top: -10px;
+  left: -10px;
+}
+
+.cbx input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  visibility: hidden;
+}
+
+.cbx-transition {
+  transition: 300ms ease;
+}
+
+/* Texto */
+
+h1, h2, h3, a {
+  margin: 0;
+  line-height: .9;
+}
+
+h1 {
+  font-size: 4.3vh;
+  color: black;
+  text-shadow: 0 .4vh .4vh rgba(0, 0, 0, .1);
+}
+
+h2 {
+  font-size: 2.84vh;
+  color: #B0B0B0;
+}
+
+h3, a {
+  font-size: 1.83vh;
+}
+
+h3 {
+  color: black;
+  font-weight: lighter;
+}
+
+a {
+  color: #F68E63;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Imagens */
+
+.img {
+  position: absolute;
+  width: 100%;
+  max-width: 50vw;
+}
+
+#fractal-glass {
+  background-image: url('./images/fractal-glass-orange.png');
+  height: 98%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#circle-fill {
+  background-image: url('./images/circle-fill.png');
+  height: 310px;
+  top: 0;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#circle-outline {
+  background-image: url('./images/circle-outline.png');
+  height: 470px;
+  bottom: 0;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Responsividade */
+
+@media (max-width: 1150px) {
+  #leftdiv, #circle-fill, #circle-outline {
+    display: none;
+  }
+
+  #rightdiv {
+    width: 100%;
+    background-color: #FDEEB8;
+  }
+
+  #card {
+    width: 98%;
+    height: 85%;
+  }
+}
